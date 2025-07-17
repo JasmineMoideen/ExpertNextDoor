@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import NewsLetterSection from "../components/NewsLetterSection";
 import Footer from "../components/Footer";
@@ -10,7 +11,7 @@ import thumb3 from "../assets/img/listing/details/thumb-3.jpg";
 import thumb4 from "../assets/img/listing/details/thumb-4.jpg";
 import listing_detail from "../assets/img/listing/details/listing-details-1.jpg";
 import ld_icon from "../assets/img/listing/details/ld-icon.png";
-import service_icon from "../assets/img/listing/details/amenities/ame-8.png"
+import service_icon from "../assets/img/listing/details/amenities/ame-8.png";
 const thumbs = [thumb1, thumb2, thumb3, thumb4];
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -27,7 +28,7 @@ const ServiceCategoryDetail = () => {
     const fetchAll = async () => {
       try {
         const termRes = await axios.get(
-          `http://localhost/servicelisting/wp-json/wp/v2/service-category?slug=${slug}`
+          `http://localhost/servicelisting-react/wp-json/wp/v2/service-category?slug=${slug}`
         );
 
         const currentTerm = termRes.data[0];
@@ -37,13 +38,13 @@ const ServiceCategoryDetail = () => {
         setTerm(currentTerm);
 
         const acfRes = await axios.get(
-          `http://localhost/servicelisting/wp-json/wp/v2/service-category?slug=${slug}`
+          `http://localhost/servicelisting-react/wp-json/wp/v2/service-category?slug=${slug}`
         );
 
         setAcf(currentTerm.acf);
 
         const providersRes = await axios.get(
-          `http://localhost/servicelisting/wp-json/wp/v2/user-profile?service-category=${currentTerm.id}&_embed`
+          `http://localhost/servicelisting-react/wp-json/wp/v2/user-profile?service-category=${currentTerm.id}&_embed`
         );
 
         setProviders(providersRes.data);
@@ -147,10 +148,7 @@ const ServiceCategoryDetail = () => {
                     {acf.specific_services?.map((item, idx) => (
                       <div className="col-lg-3 col-md-3 col-6" key={idx}>
                         <div className="listing__details__amenities__item">
-                          <img
-                            src={service_icon}
-                            alt=""
-                          />
+                          <img src={service_icon} alt="" />
                           <h6>{item.service_name}</h6>
                         </div>
                       </div>
@@ -219,44 +217,38 @@ const ServiceCategoryDetail = () => {
             </div>
 
             {providers.length > 0 ? (
-              providers.map((profile) => (
-                <div key={profile.id} className="col-lg-4 col-md-6">
-                  <div className="provider-card">
-                    <div className="provider-card__image">
-                      {profile.featured_media ? (
-                        <img
-                          src={
-                            profile._embedded?.["wp:featuredmedia"]?.[0]
-                              ?.source_url || "/img/default.jpg"
-                          }
-                          alt=""
-                        />
-                      ) : (
+              providers
+              .filter((profile) => profile.acf?.user_id != 3) 
+              .map((profile) => {
+               
+                return (
+                  <div key={profile.id} className="col-lg-4 col-md-6">
+                    <div className="provider-card">
+                      <div className="provider-card__image">
                         <img
                           src={profile.acf?.profile_image || "/img/default.jpg"}
                           alt=""
                         />
-                      )}
-                    </div>
-                    <div className="provider-card__content">
-                      <h5>{profile.title.rendered}</h5>
-                      <p>
-                        {profile.acf?.user_description
-                          ?.split(" ")
-                          .slice(0, 20)
-                          .join(" ")}
-                        ...
-                      </p>
-                      <a
-                        href={`/user-profile/${profile.slug}`}
-                        className="primary-btn small"
-                      >
-                        View Profile
-                      </a>
+                      </div>
+                      <div className="provider-card__content">
+                        <h5>{profile.title.rendered}</h5>
+                        <p>
+                          {profile.acf?.user_description
+                            ?.split(" ")
+                            .slice(0, 20)
+                            .join(" ")}
+                          ...
+                        </p>
+                        <Link to= {`/servicelisting/user-profile/${profile.acf?.user_id}`}
+                          className="primary-btn small"
+                        >
+                          View Profile
+                        </Link>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))
+                );
+              })
             ) : (
               <div className="col-lg-12">
                 <p>No service providers found in this category.</p>

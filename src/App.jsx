@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import ListingPage from "./pages/ListingPage";
 import ServiceCategoryDetail from "./pages/ServiceCategoryDetail";
+import UserProfileDetail from "./pages/UserProfileDetail";
 
 function App() {
   return (
@@ -13,6 +14,10 @@ function App() {
         <Route
           path="/servicelisting/service-category/:slug"
           element={<ServiceCategoryDetail />}
+        />
+        <Route
+          path="/servicelisting/user-profile/:userId"
+          element={<UserProfileDetail />}
         />
       </Routes>
     </Router>
