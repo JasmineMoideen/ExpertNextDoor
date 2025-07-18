@@ -8,38 +8,45 @@ import listingHeroImg from "../assets/img/listing/details/listing-hero.jpg";
 
 const UserProfileDetail = () => {
   const { userId } = useParams();
-  
+
   const [userData, setUserData] = useState(null);
 
-
   useEffect(() => {
-  if (userId) {
-    const fetchUserData = async () => {
-      const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0L3NlcnZpY2VsaXN0aW5nLXJlYWN0IiwiaWF0IjoxNzUyNzUxODg1LCJuYmYiOjE3NTI3NTE4ODUsImV4cCI6MTc1MzM1NjY4NSwiZGF0YSI6eyJ1c2VyIjp7ImlkIjoiMSJ9fX0.ZoGEruNMa9pO94sGvoJVtPj_fwGGjPW4KSLNcf-5G3k";
-      const headers = {
-        Authorization: `Bearer ${token}`,
+    if (userId) {
+      const fetchUserData = async () => {
+        const token =
+          "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0L3NlcnZpY2VsaXN0aW5nLXJlYWN0IiwiaWF0IjoxNzUyNzUxODg1LCJuYmYiOjE3NTI3NTE4ODUsImV4cCI6MTc1MzM1NjY4NSwiZGF0YSI6eyJ1c2VyIjp7ImlkIjoiMSJ9fX0.ZoGEruNMa9pO94sGvoJVtPj_fwGGjPW4KSLNcf-5G3k";
+        const headers = {
+          Authorization: `Bearer ${token}`,
+        };
+
+        try {
+          const res = await axios.get(
+            `http://localhost/servicelisting-react/wp-json/wp/v2/user-profile?acf.user_id=${userId}`,
+            { headers }
+          );
+
+          console.log("Full response:", res);
+
+          // Filter the matching user ID
+          const matchedProfile = res.data.find(
+            (item) => item.acf?.user_id == userId
+          );
+
+          if (matchedProfile) {
+            console.log("Matched ACF fields:", matchedProfile.acf);
+            setUserData(matchedProfile);
+          } else {
+            console.warn("No profile found for user ID:", userId);
+          }
+        } catch (error) {
+          console.error("Error fetching user or ACF data:", error);
+        }
       };
 
-      try {
-        const res = await axios.get(
-          `http://localhost/servicelisting-react/wp-json/wp/v2/user-profile/135`,
-          { headers }
-        );
-        const acfRes = await axios.get(
-          `http://localhost/servicelisting-react/wp-json/acf/v3/user-profile/135`,
-          { headers }
-        );
-
-        setUserData({ ...res.data, acf: acfRes.data.acf });
-      } catch (error) {
-        console.error('Error fetching user or ACF data:', error);
-      }
-    };
-
-    fetchUserData();
-  }
-}, [userId]);
-
+      fetchUserData();
+    }
+  }, [userId]);
 
   if (!userData) return <div>Loading...</div>;
 

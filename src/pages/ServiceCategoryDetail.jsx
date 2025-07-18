@@ -32,22 +32,21 @@ const ServiceCategoryDetail = () => {
         );
 
         const currentTerm = termRes.data[0];
+        console.log(currentTerm);
         if (!currentTerm) {
           throw new Error("No term found for this slug.");
         }
         setTerm(currentTerm);
 
-        const acfRes = await axios.get(
-          `http://localhost/servicelisting-react/wp-json/wp/v2/service-category?slug=${slug}`
-        );
 
         setAcf(currentTerm.acf);
 
         const providersRes = await axios.get(
-          `http://localhost/servicelisting-react/wp-json/wp/v2/user-profile?service-category=${currentTerm.id}&_embed`
+          `http://localhost/servicelisting-react/wp-json/wp/v2/user-profile?service-category=${currentTerm.id}`
         );
 
         setProviders(providersRes.data);
+        
 
         setLoading(false);
       } catch (err) {
