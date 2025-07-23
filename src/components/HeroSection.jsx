@@ -36,7 +36,9 @@ const HeroSection = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost/servicelisting-react/wp-json/wp/v2/service-category")
+      .get(
+        "http://localhost/servicelisting-react/wp-json/wp/v2/service-category"
+      )
       .then((res) => setServiceCategories(res.data))
       .catch((err) => console.error("Error fetching categories", err));
   }, []);
@@ -133,7 +135,8 @@ const HeroSection = () => {
               <ul className="hero__categories__tags">
                 {serviceCategories.map((cat) => {
                  
-
+                  console.log(cat);
+                  console.log()
                   return (
                     <li key={cat.id}>
                       <Link to={`/servicelisting/service-category/${cat.slug}`}>
@@ -142,7 +145,7 @@ const HeroSection = () => {
                           alt={cat.name}
                         />
                         {cat.name}
-                       </Link>
+                      </Link>
                     </li>
                   );
                 })}
