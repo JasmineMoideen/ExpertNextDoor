@@ -28,9 +28,8 @@ const PopularCategories = () => {
                 <div className="categories__item" key={index}>
                   <img
                     src={
-                      category.acf?.['service_category_image']?.url ||
-                      category.acf?.['service_category_image'] ||
-                      "/default-icon.png"
+                   
+                      category.acf_plus?.['service_category_image'] 
                     }
                     alt={category.name}
                   />

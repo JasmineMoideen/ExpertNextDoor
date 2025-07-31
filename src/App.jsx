@@ -12,11 +12,11 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/listing" element={<ListingPage />} />
         <Route
-          path="/servicelisting/service-category/:slug"
+          path="/servicelisting-react/service-category/:slug"
           element={<ServiceCategoryDetail />}
         />
         <Route
-          path="/servicelisting/user-profile/:userId"
+          path="/servicelisting-react/user-profile/:userId"
           element={<UserProfileDetail />}
         />
       </Routes>

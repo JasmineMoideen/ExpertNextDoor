@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Header from "../components/Header";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -32,7 +33,7 @@ const ServiceCategoryDetail = () => {
         );
 
         const currentTerm = termRes.data[0];
-        console.log(currentTerm);
+        
         if (!currentTerm) {
           throw new Error("No term found for this slug.");
         }
@@ -63,6 +64,7 @@ const ServiceCategoryDetail = () => {
 
   return (
     <>
+     <Header />
       {/* Hero Section */}
       <section
         className="listing-hero set-bg"
@@ -220,12 +222,13 @@ const ServiceCategoryDetail = () => {
               .filter((profile) => profile.acf?.user_id != 3) 
               .map((profile) => {
                
+               
                 return (
                   <div key={profile.id} className="col-lg-4 col-md-6">
                     <div className="provider-card">
                       <div className="provider-card__image">
                         <img
-                          src={profile.acf?.profile_image || "/img/default.jpg"}
+                          src={profile.acf_plus?.profile_image}
                           alt=""
                         />
                       </div>
@@ -238,7 +241,7 @@ const ServiceCategoryDetail = () => {
                             .join(" ")}
                           ...
                         </p>
-                        <Link to= {`/servicelisting/user-profile/${profile.acf?.user_id}`}
+                        <Link to= {`/servicelisting-react/user-profile/${profile.acf?.user_id}`}
                           className="primary-btn small"
                         >
                           View Profile

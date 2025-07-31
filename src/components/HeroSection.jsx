@@ -135,13 +135,15 @@ const HeroSection = () => {
               <ul className="hero__categories__tags">
                 {serviceCategories.map((cat) => {
                  
-                  console.log(cat);
-                  console.log()
+                  console.log(cat.acf_plus?.service_category_image);
                   return (
                     <li key={cat.id}>
-                      <Link to={`/servicelisting/service-category/${cat.slug}`}>
+                      <Link
+                        to={`/servicelisting-react/service-category/${cat.slug}`}
+                      >
+                        
                         <img
-                          src={cat.acf?.service_category_image}
+                          src={cat.acf_plus?.service_category_image}
                           alt={cat.name}
                         />
                         {cat.name}
