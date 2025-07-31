@@ -90,7 +90,7 @@ const ServiceCategoryDetail = () => {
             <div className="col-lg-4">
               <div className="listing__hero__btns">
                 <a
-                  href={`/service-appointment-booking/?location_id=1&service_id=${acf.service_id}&user_id=3`}
+                  href={`http://localhost/servicelisting-react/service-appointment-booking/?location_id=1&service_id=${acf?.service_id}&user_id=3`}
                   className="primary-btn"
                 >
                   <i className="fa fa-calendar"></i> Book Appointment

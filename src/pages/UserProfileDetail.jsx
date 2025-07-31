@@ -34,7 +34,6 @@ const UserProfileDetail = () => {
           );
 
           if (matchedProfile) {
-            console.log("Matched ACF fields:", matchedProfile.acf);
             setUserData(matchedProfile);
           } else {
             console.warn("No profile found for user ID:", userId);
@@ -93,7 +92,7 @@ const UserProfileDetail = () => {
             <div className="col-lg-4">
               <div className="listing__hero__btns">
                 <a
-                  href={`/user-appointment-booking?user_id=${user_id}`}
+                  href={`http://localhost/servicelisting-react/user-appointment-booking/?user_id=${user_id}`}
                   className="primary-btn"
                 >
                   <i className="fa fa-calendar"></i> Book Appointment
