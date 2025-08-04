@@ -6,7 +6,7 @@ const PopularCategories = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost/servicelisting-react/wp-json/wp/v2/service-category")
+      .get("https://expertnext.demoserver.work/wp-json/wp/v2/service-category")
       .then((res) => setServiceCategories(res.data))
       .catch((err) => console.error("Error fetching categories", err));
   }, []);

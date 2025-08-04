@@ -22,7 +22,7 @@ const UserProfileDetail = () => {
 
         try {
           const res = await axios.get(
-            `http://localhost/servicelisting-react/wp-json/wp/v2/user-profile?acf.user_id=${userId}`,
+            `https://expertnext.demoserver.work/wp-json/wp/v2/user-profile?acf.user_id=${userId}`,
             { headers }
           );
 
@@ -92,7 +92,7 @@ const UserProfileDetail = () => {
             <div className="col-lg-4">
               <div className="listing__hero__btns">
                 <a
-                  href={`http://localhost/servicelisting-react/user-appointment-booking/?user_id=${user_id}`}
+                  href={`https://expertnext.demoserver.work/user-appointment-booking/?user_id=${user_id}`}
                   className="primary-btn"
                 >
                   <i className="fa fa-calendar"></i> Book Appointment

@@ -29,7 +29,7 @@ const ServiceCategoryDetail = () => {
     const fetchAll = async () => {
       try {
         const termRes = await axios.get(
-          `http://localhost/servicelisting-react/wp-json/wp/v2/service-category?slug=${slug}`
+          `https://expertnext.demoserver.work/wp-json/wp/v2/service-category?slug=${slug}`
         );
 
         const currentTerm = termRes.data[0];
@@ -43,7 +43,7 @@ const ServiceCategoryDetail = () => {
         setAcf(currentTerm.acf);
 
         const providersRes = await axios.get(
-          `http://localhost/servicelisting-react/wp-json/wp/v2/user-profile?service-category=${currentTerm.id}`
+          `https://expertnext.demoserver.work/wp-json/wp/v2/user-profile?service-category=${currentTerm.id}`
         );
 
         setProviders(providersRes.data);
@@ -90,7 +90,7 @@ const ServiceCategoryDetail = () => {
             <div className="col-lg-4">
               <div className="listing__hero__btns">
                 <a
-                  href={`http://localhost/servicelisting-react/service-appointment-booking/?location_id=1&service_id=${acf?.service_id}&user_id=3`}
+                  href={`https://expertnext.demoserver.work/service-appointment-booking/?location_id=1&service_id=${acf?.service_id}&user_id=3`}
                   className="primary-btn"
                 >
                   <i className="fa fa-calendar"></i> Book Appointment
