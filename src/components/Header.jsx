@@ -19,24 +19,24 @@ const Header = () => {
               <nav className="header__menu mobile-menu">
                 <ul>
                   <li><a href="/">Home</a></li>
-                  <li><a href="/listing">Listing</a></li>
+                 
                   <li><a href="#">Categories</a></li>
                   <li>
                     <a href="#">Pages</a>
                     <ul className="dropdown">
-                      <li><a href="/about">About</a></li>
-                      <li><a href="/listing-details">Listing Details</a></li>
-                      <li><a href="/blog-details">Blog Details</a></li>
-                      <li><a href="/contact">Contact</a></li>
+                      
+                     
+                      <li><a href="/blog-details">Blogs</a></li>
+                      <li><a href="/contact">About</a></li>
                     </ul>
                   </li>
-                  <li><a href="/blog">Blog</a></li>
-                  <li><a href="#">Shop</a></li>
+                  
+                  <li><a href="#">Contact</a></li>
                 </ul>
               </nav>
               <div className="header__menu__right">
                 <a href="#" className="primary-btn">
-                  <i className="fa fa-plus"></i> Add Listing
+                  <i className="fa fa-plus"></i> Login
                 </a>
                 <a href="#" className="login-btn">
                   <i className="fa fa-user"></i>
