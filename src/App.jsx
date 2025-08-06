@@ -4,6 +4,7 @@ import HomePage from "./pages/HomePage";
 import ListingPage from "./pages/ListingPage";
 import ServiceCategoryDetail from "./pages/ServiceCategoryDetail";
 import UserProfileDetail from "./pages/UserProfileDetail";
+import Contact from "./pages/Contact";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           path="/servicelisting-react/user-profile/:userId"
           element={<UserProfileDetail />}
         />
+        <Route path="/contact" element={<Contact/>} />
       </Routes>
     </Router>
   );
