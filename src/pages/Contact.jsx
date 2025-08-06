@@ -32,7 +32,7 @@ const Contact = () => {
 
     try {
       const response = await fetch(
-        "http://localhost/servicelisting-react/wp-json/react-form/v1/submit/",
+        "https://expertnext.demoserver.work/wp-json/react-form/v1/submit/",
         {
           method: "POST",
           body: formBody,
