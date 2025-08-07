@@ -1,6 +1,6 @@
-import React from 'react';
-import logo from '../assets/img/Logo.png';
-
+import React from "react";
+import logo from "../assets/img/Logo.png";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -18,20 +18,28 @@ const Header = () => {
             <div className="header__nav">
               <nav className="header__menu mobile-menu">
                 <ul>
-                  <li><a href="/">Home</a></li>
-                 
-                  <li><a href="#">Categories</a></li>
+                  <li>
+                    <a href="/">Home</a>
+                  </li>
+
+                  <li>
+                    <a href="#">Categories</a>
+                  </li>
                   <li>
                     <a href="#">Pages</a>
                     <ul className="dropdown">
-                      
-                     
-                      <li><a href="/blog-details">Blogs</a></li>
-                      <li><a href="/contact">About</a></li>
+                      <li>
+                        <a href="/blog-details">Blogs</a>
+                      </li>
+                      <li>
+                        <a href="/contact">About</a>
+                      </li>
                     </ul>
                   </li>
-                  
-                  <li><a href="#">Contact</a></li>
+
+                  <li>
+                    <Link to="/contact">Contact</Link>
+                  </li>
                 </ul>
               </nav>
               <div className="header__menu__right">

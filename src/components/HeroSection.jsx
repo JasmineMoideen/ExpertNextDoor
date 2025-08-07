@@ -135,7 +135,7 @@ const HeroSection = () => {
               <ul className="hero__categories__tags">
                 {serviceCategories.map((cat) => {
                  
-                  console.log(cat.acf_plus?.service_category_image);
+              
                   return (
                     <li key={cat.id}>
                       <Link
