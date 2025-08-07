@@ -1,4 +1,4 @@
-import React, { useEffect, useState }from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import logo from "../assets/img/Logo.png";
 import { Link } from "react-router-dom";
@@ -44,6 +44,9 @@ const Header = () => {
                 >
                   <i className="fa fa-plus"></i> Login
                 </a>
+                <Link to="/contact" className="primary-btn">
+                  Contact
+                </Link>
               </div>
             </div>
           </div>
