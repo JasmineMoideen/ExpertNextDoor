@@ -43,12 +43,10 @@ const Header = () => {
                 </ul>
               </nav>
               <div className="header__menu__right">
-                <a href="#" className="primary-btn">
+                <a href="https://expertnext.demoserver.work/wp-login.php" className="primary-btn">
                   <i className="fa fa-plus"></i> Login
                 </a>
-                <a href="#" className="login-btn">
-                  <i className="fa fa-user"></i>
-                </a>
+
               </div>
             </div>
           </div>
