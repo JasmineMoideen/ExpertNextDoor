@@ -38,12 +38,7 @@ const Header = () => {
                 </ul>
               </nav>
               <div className="header__menu__right">
-                <a
-                  href="https://expertnext.demoserver.work/wp-login.php"
-                  className="primary-btn"
-                >
-                  <i className="fa fa-plus"></i> Login
-                </a>
+
                 <Link to="/contact" className="primary-btn">
                   Contact
                 </Link>
