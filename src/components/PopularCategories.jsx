@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Link } from "react-router-dom";
 
 const PopularCategories = () => {
   const [serviceCategories, setServiceCategories] = useState([]);
@@ -26,6 +27,9 @@ const PopularCategories = () => {
             <div className="categories__item__list">
               {serviceCategories.map((category, index) => (
                 <div className="categories__item" key={index}>
+                  <Link
+                        to={`/servicelisting-react/service-category/${category.slug}`}
+                      >
                   <img
                     src={
                    
@@ -33,7 +37,9 @@ const PopularCategories = () => {
                     }
                     alt={category.name}
                   />
+                  
                   <h5>{category.name}</h5>
+                  </Link>
                   <span>{category.count} Listings</span>
                 </div>
               ))}
