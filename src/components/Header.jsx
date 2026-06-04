@@ -7,7 +7,7 @@ const Header = () => {
   const [menuItems, setMenuItems] = useState([]);
   useEffect(() => {
     axios
-      .get(`https://expertnext.demoserver.work/wp-json/custom/v1/menu/primary`) // or REACT_APP_URL if using CRA
+      .get(`http://localhost/servicelisting-react/wp-json/custom/v1/menu/primary`) // or REACT_APP_URL if using CRA
       .then((res) => {
         setMenuItems(res.data); // depends on plugin response structure
       })
